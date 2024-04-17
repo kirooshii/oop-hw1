@@ -41,30 +41,35 @@ public class RentalCompany {
     }
     
     // rents a scooter from the rental company
-    public void rentScooter() {
-        boolean rented = false;
+    public Scooter rentScooter() {
+        Scooter rentedScooter = null;
         for (Scooter scooter: scooters) {
-            // if there is an available scooter, it sets the scooter as rented and prints the details of the rented scooter
+            // if there is an available scooter, it sets the scooter as rented and returns it
             if (scooter.isAvailable()) {
-                rented = true;
+                rentedScooter = scooter;
                 scooter.setAvailable(false);
-                System.out.println("You've rented: " + scooter.getModel() + "  ID: " + scooter.getId());
+                System.out.println("You've rented: " + scooter.getModel() + "  ID: " + scooter.getId() + "  Battery level: " + scooter.getBatteryLevel() + "%");
                 break;
             }
         }
         // if there are no available scooters, it prints a message indicating that no scooters are available.
-        if (!rented) {
+        if (rentedScooter == null) {
             System.out.println("Unfortunately, no scooters available");
         }
+        return rentedScooter; // returns the rented scooter with the all information
     }
 
+
      // returns a scooter with the specified ID to the rental company
-    public void returnScooter(int id) {
+    public void returnScooter(int id, double x, double y) {
         for (Scooter scooter: scooters) {
             // if a scooter with the given ID is found, it is marked as available and prints the details of the returned scooter
             if (scooter.getId() == id) {
                 scooter.setAvailable(true);
-                System.out.println("You've returned: " + scooter.getModel() + "  ID: " + scooter.getId());
+                scooter.setX(x);
+                scooter.setY(y);
+                System.out.println("You've returned: " + scooter.getModel() + "  ID: " + scooter.getId() + "  Battery level: " + scooter.getBatteryLevel() + "%");
+                System.out.println();
                 break;
             }
             // if a scooter with the given ID is not found, it prints a message indicating that the scooter was not found

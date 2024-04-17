@@ -1,5 +1,7 @@
 package homeworks.hw1.scooter;
 
+import java.util.Random;
+
 public class Scooter {
 
     // Unique identifier for the scooter.
@@ -63,6 +65,13 @@ public class Scooter {
 
     public void setAvailable(boolean available) {
         this.available = available;
+    }
+
+    public void goTo(double x, double y) {
+        this.x = x;
+        this.y = y;
+        this.batteryLevel -= new Random().nextInt(20);
+        System.out.println("You've arrived at the " + x + " " + y);
     }
 
     @Override

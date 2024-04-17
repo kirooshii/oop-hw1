@@ -67,10 +67,11 @@ public class Scooter {
         this.available = available;
     }
 
+    // goTo method that move the scooter to the specified location
     public void goTo(double x, double y) {
         this.x = x;
         this.y = y;
-        this.batteryLevel -= new Random().nextInt(20);
+        this.batteryLevel -= new Random().nextInt(20); // decrease the battery level by a random number between 0 and 20
         System.out.println("You've arrived at the " + x + " " + y);
     }
 
